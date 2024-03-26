@@ -33,3 +33,4 @@ packages/
 .idea
 node_modules
 .angular
+package-lock.json
