@@ -1,0 +1,15 @@
+<h1>Вопросы теста</h1>
+<label>Вопрос {{currentQuestionNumber + 1}} из {{questions.length}}</label>
+<div>
+    <label>{{currentQuestion.text}}</label>
+    <div>
+        @for(answer of currentQuestion.answers; track $index) {
+            <input type="radio" [value]="$index" name="answer-id" [(ngModel)]="currentQuestion.selectedAnswerId">{{answer}}
+        }
+    </div>
+</div>
+<div>
+    <button (click)="previous()">Назад</button>
+    <button (click)="next()">Вперед</button>
+</div>
+<div>{{showSelectedAnswers}}</div>
