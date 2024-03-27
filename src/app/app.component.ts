@@ -4,7 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
-import { QuizService } from './quiz.service'
+import {MatDialog} from '@angular/material/dialog';
+import { QuizService } from './quiz.service';
+import { QuizResultDialog } from './quiz-results.component';
 import { Question } from './question';
 
 @Component({
@@ -21,7 +23,7 @@ export class AppComponent implements OnInit {
     currentQuestion: Question;
     showSelectedAnswers: string;
 
-    constructor(private quizService: QuizService) {
+    constructor(private quizService: QuizService, public dialog: MatDialog) {
         this.questions = new Array<Question>();
     }
 
@@ -50,6 +52,12 @@ export class AppComponent implements OnInit {
             return;
         }
         
-        this.showSelectedAnswers = `Выбранные ответы: ${this.questions.map(x => `Вопрос ${x.id}, выбранный ответ ${x.selectedAnswerId};`)}`;
+        this.openDialog();
     }
+
+    openDialog() {
+        this.dialog.open(QuizResultDialog, {
+          data: this.questions.map(x => `Вопрос ${x.id}, выбранный ответ ${x.selectedAnswerId};`),
+        });
+      }
 }
