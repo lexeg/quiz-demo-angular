@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 import { QuizService } from './quiz.service'
 import { Question } from './question';
 
 @Component({
     selector: "my-app",
     standalone: true,
-    imports: [HttpClientModule, FormsModule],
+    imports: [HttpClientModule, FormsModule, MatCardModule, MatButtonModule, MatRadioModule],
     templateUrl: "./app.component.html",
+    styleUrl: './app.component.css',
     providers: [QuizService]
 })
 export class AppComponent implements OnInit {
