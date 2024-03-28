@@ -6,7 +6,8 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build"
+        "build": "ng build",
+        "deploy-github": "ng deploy --no-nojekyll --dir=dist --base-href https://lexeg.github.io/quiz-demo-angular/"
     },
     "devDependencies": {
         "@angular/common": "^17.3.0",
