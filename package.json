@@ -27,6 +27,7 @@
     "@typescript-eslint/parser": "7.2.0",
     "angular-cli-ghpages": "^2.0.0-beta.2",
     "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
     "rxjs": "^7.8.1",
     "zone.js": "^0.14.4"
   },
