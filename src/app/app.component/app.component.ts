@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialog } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { QuizService } from '../quiz.service';
 import { QuizResultDialog } from '../quiz-results.component/quiz-results.component';
 import { Question } from '../question';
@@ -19,6 +20,7 @@ import { Question } from '../question';
     MatCardModule,
     MatButtonModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
     NgIf,
   ],
   templateUrl: './app.component.html',

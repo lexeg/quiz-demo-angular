@@ -1,4 +1,9 @@
-<div *ngIf="!isLoaded">Дождитесь завершения загрузки</div>
+<mat-card *ngIf="!isLoaded">
+  <mat-card-content>
+    <h2>Дождитесь завершения загрузки</h2>
+    <mat-spinner></mat-spinner>
+  </mat-card-content>
+</mat-card>
 <mat-card *ngIf="isLoaded">
   <mat-card-header>
     <mat-card-title>Вопросы теста</mat-card-title>
