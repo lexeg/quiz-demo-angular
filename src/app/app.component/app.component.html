@@ -1,4 +1,5 @@
-<mat-card>
+<div *ngIf="!isLoaded">Дождитесь завершения загрузки</div>
+<mat-card *ngIf="isLoaded">
   <mat-card-header>
     <mat-card-title>Вопросы теста</mat-card-title>
     <mat-card-subtitle
@@ -7,8 +8,9 @@
     >
   </mat-card-header>
   <mat-card-content>
-    <label>{{ currentQuestion.text }}</label>
+    <label for="current-question">{{ currentQuestion.text }}</label>
     <mat-radio-group
+      id="current-question"
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
       [(ngModel)]="currentQuestion.selectedAnswerId">

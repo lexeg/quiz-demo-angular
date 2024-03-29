@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialog } from '@angular/material/dialog';
-import { QuizService } from './quiz.service';
-import { QuizResultDialog } from './quiz-results.component';
-import { Question } from './question';
+import { QuizService } from '../quiz.service';
+import { QuizResultDialog } from '../quiz-results.component/quiz-results.component';
+import { Question } from '../question';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-component',
   standalone: true,
   imports: [
     HttpClientModule,
@@ -18,12 +19,14 @@ import { Question } from './question';
     MatCardModule,
     MatButtonModule,
     MatRadioModule,
+    NgIf,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [QuizService],
 })
 export class AppComponent implements OnInit {
+  isLoaded: boolean;
   questions: Array<Question>;
   currentQuestionNumber: number;
   currentQuestion: Question;
@@ -38,12 +41,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadQuestions();
-    this.currentQuestionNumber = 0;
-    this.currentQuestion = this.questions[0];
   }
 
   private loadQuestions() {
-    this.questions = this.quizService.getFirstTest();
+    this.quizService.getFirstTest().subscribe((data: Question[]) => {
+      this.questions = data;
+      this.isLoaded = true;
+      this.currentQuestionNumber = 0;
+      this.currentQuestion = this.questions[0];
+    });
   }
 
   previous() {
