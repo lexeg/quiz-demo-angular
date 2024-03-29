@@ -28,7 +28,11 @@
       mat-button
       (click)="next()"
       [disabled]="currentQuestion.selectedAnswerId === undefined">
-      Вперед
+      {{
+        questions.length === currentQuestionNumber + 1
+          ? 'Завершить тест'
+          : 'Вперед'
+      }}
     </button>
   </mat-card-actions>
 </mat-card>
